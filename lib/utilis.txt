@@ -1,0 +1,8 @@
+1/SharedPreferences :
+Pour conditionner l'affichage d'un bouton "Next" uniquement lors de la première ouverture de 
+l'application, vous pouvez utiliser la classe SharedPreferences de Flutter pour stocker une 
+valeur indiquant si l'application a été ouverte précédemment.
+
+2/Mise à jour de l'application
+Utilisez une bibliothèque telle que flutter_updater pour rendre le processus de mise à jour plus automatisé.
+
