@@ -1,8 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:async';
-import 'functions/functions.dart';
-import 'package:quado_app/home_page.dart';
-import 'package:quado_app/cleaning_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,10 +18,6 @@ class MyApp extends StatelessWidget {
       ),
       home: const LoadingPage(),
       debugShowCheckedModeBanner: false,
-      routes: {
-        "/HomePage" :(context) => const HomePage(),
-        "/CleaningPage" : (context) => const CleaningPage(),
-      },
     );
   }
 }
@@ -38,39 +30,35 @@ class LoadingPage extends StatefulWidget {
 }
 
 class LoadingPageState extends State<LoadingPage> {
-  @override
-  void initState() {
-    super.initState();
-    Timer(
-      const Duration(seconds: 2),
-      () {
-        Navigator.of(context).pushReplacement(
-          MaterialPageRoute(
-            builder: (context) => const HomePage(),
-          ),
-        );
-      },
-    );
-  }
+  List<String> students = ['Voldi', 'Anderson', 'Divin', 'David', 'Michel'];
+  List<Color> colors = [Colors.white, Colors.blue, Colors.red, Colors.yellow, Colors.red];
+  int index = 1;
 
   @override
-  Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
-    
-    return Scaffold(
-      backgroundColor: background,
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+  Widget build(BuildContext context){
+    return ListView.builder(
+      physics: ClampingScrollPhysics(),
+      itemCount: students.length,
+      itemBuilder: (BuildContext context, int index) {
+        return Column(
           children: [
-            Image(
-              image: const AssetImage("assets/images/quado.png"),
-              height: height/2.5,
-            ),
-            // simpleText('Cleaning wash corporation'),
+            myContainer('$index', colors[index]),
           ],
-        ),
+        );
+      }
+    );
+  }
+  
+  Container myContainer(String text, Color color){
+    return Container(
+      width: 300,
+      height: 200,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        color: color
       ),
-    ); 
+      child: Text(text),
+    );
   }
 }
+

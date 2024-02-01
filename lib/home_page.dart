@@ -25,6 +25,7 @@ class HomePageState extends State<HomePage> {
     ),
     backgroundColor:Colors.white,
     body: SingleChildScrollView(
+      physics: const NeverScrollableScrollPhysics(),
       child: Container(
         padding: const EdgeInsets.all(0),
         // margin: EdgeInsets.only(top : radius/4),
